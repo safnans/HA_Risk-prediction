@@ -316,8 +316,8 @@ if 'LightGBM' in models:
     if patient_ids is not None:
         at_risk_ids = patient_ids.loc[patient_ids[target_column] == 1, 'Patient ID']
         print(f'Number of patients at risk: {len(at_risk_ids)}')
-        print('Patient IDs of those at risk:')
-        print(at_risk_ids.tolist())
+       # print('Patient IDs of those at risk:')
+       # print(at_risk_ids.tolist())
 
 # Visualize heatmap for correlation matrix
 plt.figure(figsize=(12, 8))
