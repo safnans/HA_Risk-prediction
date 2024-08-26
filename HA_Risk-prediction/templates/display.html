@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .result {
+            background-color: #e6ffe6;
+            color: #006600;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Heart Attack Risk Prediction Result</h1>
+
+    {% if errors %}
+        <div class="errors">
+            <h2>Validation Errors</h2>
+            <ul>
+                {% for error in errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    {% if risk_status is not none %}
+        <div class="result">
+            <h2>Prediction Result</h2>
+            <p>The patient is: <strong>{{ risk_status }}</strong></p>
+        </div>
+    {% endif %}
+</body>
+</html>
+
+

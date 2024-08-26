@@ -1,0 +1,46 @@
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 938-700-958
+INFO:werkzeug:127.0.0.1 - - [21/Aug/2024 19:56:18] "GET / HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'D:\\Internship_Assignments\\Task_4\\HA_Risk-prediction\\HR_app.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Internship_Assignments\\Task_4\\HA_Risk-prediction\\tmp5ga64f_r', reloading
+INFO:werkzeug: * Detected change in 'D:\\Internship_Assignments\\Task_4\\HA_Risk-prediction\\HR_app.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 938-700-958
+INFO:werkzeug:127.0.0.1 - - [21/Aug/2024 20:03:58] "GET / HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Python\\cwp.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 938-700-958
+INFO:werkzeug: * Detected change in 'C:\\Python\\Scripts\\conda-script.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 938-700-958
+INFO:werkzeug: * Detected change in 'D:\\Internship_Assignments\\Task_4\\HA_Risk-prediction\\check.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 938-700-958
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 938-700-958
+INFO:werkzeug: * Detected change in 'C:\\Python\\Lib\\site-packages\\sklearn\\base.py', reloading
+INFO:werkzeug:127.0.0.1 - - [22/Aug/2024 00:27:59] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Aug/2024 00:28:00] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 938-700-958
+INFO:werkzeug: * Detected change in 'C:\\Python\\Scripts\\conda-script.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 938-700-958
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 938-700-958
+INFO:werkzeug: * Detected change in 'C:\\Python\\Lib\\site-packages\\sklearn\\base.py', reloading
+INFO:werkzeug:127.0.0.1 - - [22/Aug/2024 15:15:18] "GET / HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 938-700-958
+INFO:werkzeug:127.0.0.1 - - [22/Aug/2024 15:20:43] "GET / HTTP/1.1" 200 -
