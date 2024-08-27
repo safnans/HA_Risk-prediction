@@ -1,4 +1,4 @@
-#Import Necessary Libraries
+# Import Necessary Libraries
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split, RandomizedSearchCV
@@ -21,14 +21,13 @@ import logging
 import warnings
 import pickle
 
-
 warnings.filterwarnings('ignore')
 
 # Initialize tqdm for progress bars
 tqdm.pandas()  # For pandas progress_apply
 
 # Load the dataset
-data = pd.read_csv('D:/Internship_Assignments/Task_4/HA_Risk-prediction/heart_attack_prediction_dataset.csv')
+data = pd.read_csv('HA_Risk-prediction/heart_attack_prediction_dataset.csv')
 
 # Clean column names by stripping any leading or trailing whitespace
 data.columns = data.columns.str.strip()
@@ -48,8 +47,8 @@ data = data.apply(pd.to_numeric, errors='coerce')
 
 # Define feature columns and target column
 features = ['Age', 'Cholesterol', 'Heart Rate', 'BMI', 'Triglycerides', 
-             'Exercise Hours Per Week', 'Physical Activity Days Per Week', 'Stress Level', 
-             'Sedentary Hours Per Day']
+            'Exercise Hours Per Week', 'Physical Activity Days Per Week', 'Stress Level', 
+            'Sedentary Hours Per Day']
 target_column = 'Heart Attack Risk'
 
 # Ensure that the target column is in the DataFrame
@@ -202,11 +201,6 @@ if target_column in data.columns:
     best_model_name, best_model = max(models.items(), key=lambda x: accuracy_score(y_test, x[1].predict(X_test)))
     print(f'Best model: {best_model_name} with accuracy: {accuracy_score(y_test, best_model.predict(X_test))}')
 
-# Add LightGBM model to the models dictionary
-models = {
-    'LightGBM': lgb_best_model,
-}
-
 # Save the model and scaler
 pickle.dump(lgb_best_model, open('lgbm_model.pkl', 'wb'))
 pickle.dump(scaler, open('scaler.pkl', 'wb'))
@@ -239,9 +233,6 @@ def plot_learning_curve(model, X, y, title='Learning Curve'):
     plt.grid()
     plt.show()
     
-from sklearn.metrics import precision_recall_curve
-from sklearn.metrics import average_precision_score
-
 def plot_precision_recall_curve(model, X, y):
     y_prob = model.predict_proba(X)[:, 1]  # Get probability estimates for the positive class
     precision, recall, _ = precision_recall_curve(y, y_prob)
@@ -316,8 +307,16 @@ if 'LightGBM' in models:
     if patient_ids is not None:
         at_risk_ids = patient_ids.loc[patient_ids[target_column] == 1, 'Patient ID']
         print(f'Number of patients at risk: {len(at_risk_ids)}')
-        print('Patient IDs of those at risk:')
-        print(at_risk_ids.tolist())
+        # Uncomment the following lines if you want to display the IDs
+        # print('Patient IDs of those at risk:')
+        # print(at_risk_ids.tolist())
+
+# Check for zero variance columns
+zero_var_columns = data.loc[:, data.std() == 0].columns
+print(f"Zero variance columns: {zero_var_columns}")
+
+# Drop zero variance columns if any
+data = data.drop(columns=zero_var_columns)
 
 # Visualize heatmap for correlation matrix
 plt.figure(figsize=(12, 8))
@@ -325,17 +324,33 @@ sns.heatmap(data.corr(), annot=True, cmap='coolwarm', fmt='.2f')
 plt.title('Correlation Matrix Heatmap')
 plt.show()
 
-# Plot pairplot of the dataset
-sns.pairplot(data, hue='Heart Attack Risk')
+# Try a simple pairplot with fewer features
+sns.pairplot(data[features[:5] + [target_column]].dropna(), hue=target_column)
 plt.show()
 
-#Distribution graphs
+# Scale the features
+scaler = StandardScaler()
+scaled_features = scaler.fit_transform(data[features])
+
+# Convert back to DataFrame to match original column names
+scaled_data = pd.DataFrame(scaled_features, columns=features)
+
+# Combine with the target column
+scaled_data[target_column] = data[target_column].values
+
+# Use a smaller subset of the data
+subset_data = scaled_data.sample(n=500, random_state=42)
+
+# Plot pairplot on the scaled subset data
+sns.pairplot(subset_data[features[:5] + [target_column]], hue=target_column)
+plt.show()
+
+# Distribution graphs for each feature
 for column in features:
     plt.figure(figsize=(8, 6))
-    sns.histplot(data[column], kde=True)
+    sns.histplot(data[column].dropna(), kde=True)  # Dropping NA values for histplot
     plt.title(f'Distribution of {column}')
     plt.xlabel(column)
     plt.ylabel('Density')
     plt.grid(True)
     plt.show()
-        
