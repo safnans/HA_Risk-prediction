@@ -28,7 +28,7 @@ warnings.filterwarnings('ignore')
 tqdm.pandas()  # For pandas progress_apply
 
 # Load the dataset
-data = pd.read_csv('HA_Risk-prediction\heart_attack_prediction_dataset.csv')
+data = pd.read_csv('D:/Internship_Assignments/Task_4/HA_Risk-prediction/heart_attack_prediction_dataset.csv')
 
 # Clean column names by stripping any leading or trailing whitespace
 data.columns = data.columns.str.strip()
@@ -316,8 +316,8 @@ if 'LightGBM' in models:
     if patient_ids is not None:
         at_risk_ids = patient_ids.loc[patient_ids[target_column] == 1, 'Patient ID']
         print(f'Number of patients at risk: {len(at_risk_ids)}')
-       # print('Patient IDs of those at risk:')
-       # print(at_risk_ids.tolist())
+        print('Patient IDs of those at risk:')
+        print(at_risk_ids.tolist())
 
 # Visualize heatmap for correlation matrix
 plt.figure(figsize=(12, 8))
